@@ -1,0 +1,557 @@
+:root {
+    color-scheme: dark;
+
+    --bg: #0E0F13;
+    --surface: #191B21;
+    --ink: #F2F3F5;
+    --muted: #A0A4AE;
+    --accent: #30c868;
+    --accent-ink: #0E0F13;
+
+    --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --font-text: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+    --step-small:   clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+    --step-body:    clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+    --step-lead:    clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+    --step-head:    clamp(2rem, 1.3rem + 3.2vw, 4rem);
+    --step-display: clamp(3rem, 1rem + 9vw, 7.5rem);
+
+    --margin: clamp(1rem, 2.2vw, 2rem);
+    --gutter: clamp(0.75rem, 1.4vw, 1.5rem);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-text);
+    font-size: var(--step-body);
+    line-height: 1.5;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    margin: 0;
+    text-wrap: balance;
+    hyphens: none;
+}
+
+h1 {
+    font-size: var(--step-display);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    max-width: 14ch;
+}
+
+h2 {
+    font-size: var(--step-head);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+h3 {
+    font-size: var(--step-lead);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+p {
+    margin: 0;
+    max-width: 62ch;
+    text-wrap: pretty;
+}
+
+p + p {
+    margin-top: 0.9em;
+}
+
+.lead {
+    font-size: var(--step-lead);
+    line-height: 1.35;
+    max-width: 40ch;
+    color: var(--muted);
+}
+
+small,
+.caption {
+    font-size: var(--step-small);
+    line-height: 1.45;
+    color: var(--muted);
+}
+
+a {
+    color: inherit;
+    text-decoration-thickness: 0.07em;
+    text-underline-offset: 0.18em;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+.wrap {
+    padding-inline: var(--margin);
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ---- index.html ---- */
+
+.page-index {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1.25rem;
+}
+
+.wordmark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--step-lead);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+}
+
+.site-nav nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.site-nav nav a {
+    text-decoration: none;
+}
+
+.hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+    padding-block: 3rem;
+}
+
+.upload {
+    margin: 0;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.upload input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.upload-button {
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: var(--step-body);
+    padding: 0.9rem 1.5rem;
+    border: 0;
+    cursor: pointer;
+}
+
+.upload input[type="file"]:focus-visible + .upload-hint,
+.upload-button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.upload-hint {
+    margin: 0;
+    color: var(--muted);
+}
+
+.site-end {
+    padding-block: 2rem;
+    color: var(--muted);
+}
+
+/* ---- result.html ---- */
+
+.page-result main {
+    padding-block: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+}
+
+.result-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: end;
+}
+
+@media (min-width: 720px) {
+    .result-top {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.result-mood .caption {
+    margin-top: 1rem;
+}
+
+.photo-thumb {
+    aspect-ratio: 4 / 5;
+    background: var(--surface);
+    width: 100%;
+    max-width: 280px;
+    justify-self: end;
+}
+
+.result-songs h2 {
+    margin-bottom: 1.75rem;
+    max-width: 18ch;
+}
+
+.song-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.song-card {
+    background: var(--surface);
+    padding: 0.9rem 1.1rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: center;
+}
+
+.song-cover {
+    width: 56px;
+    height: 56px;
+    background: var(--surface);
+    flex-shrink: 0;
+}
+
+/* Placeholder cover tints, rotated across the three cards. Replaced by real
+   album art in Week 2 once songs.json carries cover URLs. */
+.song-cover--a { background: var(--mood-calm); }
+.song-cover--b { background: var(--mood-melancholy); }
+.song-cover--c { background: var(--mood-serene); }
+
+.song-info {
+    min-width: 0;
+}
+
+.song-title {
+    font-size: var(--step-body);
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.song-artist {
+    color: var(--muted);
+    font-size: var(--step-small);
+    margin: 0;
+    margin-top: 0.15rem;
+}
+
+.song-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.song-link {
+    display: inline-flex;
+    text-decoration: none;
+    line-height: 0;
+}
+
+.song-link .icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    transition: transform 0.15s;
+}
+
+.song-link:hover .icon {
+    transform: scale(1.1);
+}
+
+.shuffle-row {
+    margin-top: 1.5rem;
+    color: var(--muted);
+}
+
+.result-share {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.share-prompt {
+    font-family: var(--font-display);
+    font-size: var(--step-head);
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.share-button {
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: var(--step-body);
+    padding: 0.9rem 1.5rem;
+    border: 0;
+}
+
+/* ---- mood color placeholders ---- */
+/* These stand in for the real 7-mood palette that gets defined in Week 2
+   once the mood model exists. Diary.html and result.html use these names;
+   swap the values later, no HTML changes needed. */
+:root {
+    --mood-calm:       #4ADE80;
+    --mood-joyful:     #FBBF24;
+    --mood-tense:      #F87171;
+    --mood-melancholy: #60A5FA;
+    --mood-serene:     #5EEAD4;
+    --mood-romantic:   #F472B6;
+    --mood-nostalgic:  #D4A373;
+}
+
+/* ---- diary.html ---- */
+
+.page-diary main {
+    padding-block: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.diary-head .lead {
+    margin-top: 1rem;
+}
+
+.calendar-labels {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.calendar-labels span {
+    text-align: center;
+    font-size: var(--step-small);
+    color: var(--muted);
+}
+
+.calendar-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.day {
+    aspect-ratio: 1;
+    background: var(--surface);
+    padding: 0.5rem;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.day-num {
+    font-family: var(--font-display);
+    font-size: var(--step-small);
+    color: var(--ink);
+    font-feature-settings: "tnum" 1;
+}
+
+.day--empty {
+    background: var(--surface);
+}
+
+.day--empty .day-num {
+    color: var(--muted);
+}
+
+.day--mood-calm       { background: var(--mood-calm); }
+.day--mood-joyful     { background: var(--mood-joyful); }
+.day--mood-tense      { background: var(--mood-tense); }
+.day--mood-melancholy { background: var(--mood-melancholy); }
+.day--mood-serene     { background: var(--mood-serene); }
+.day--mood-romantic   { background: var(--mood-romantic); }
+.day--mood-nostalgic  { background: var(--mood-nostalgic); }
+
+.day[class*="day--mood-"] .day-num {
+    color: var(--bg);
+}
+
+.day--today::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    outline: 2px solid var(--ink);
+    outline-offset: -4px;
+}
+
+.diary-summary h2 {
+    margin-bottom: 1.25rem;
+    max-width: 18ch;
+}
+
+.mood-bar {
+    display: flex;
+    height: 10px;
+    gap: 2px;
+    margin-bottom: 1.25rem;
+}
+
+.mood-bar__seg {
+    display: block;
+}
+
+.mood-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 0.6rem 2rem;
+    color: var(--muted);
+}
+
+.mood-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.mood-legend .dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    flex-shrink: 0;
+}
+
+.mood-legend .count {
+    margin-left: auto;
+    color: var(--ink);
+    font-feature-settings: "tnum" 1;
+}
+
+.bar-calm       { background: var(--mood-calm); }
+.bar-joyful     { background: var(--mood-joyful); }
+.bar-tense      { background: var(--mood-tense); }
+.bar-melancholy { background: var(--mood-melancholy); }
+.bar-serene     { background: var(--mood-serene); }
+.bar-romantic   { background: var(--mood-romantic); }
+.bar-nostalgic  { background: var(--mood-nostalgic); }
+
+/* ---- about.html ---- */
+
+.page-about main {
+    padding-block: 2rem 0;
+}
+
+.about-intro {
+    padding-block: 2rem 4rem;
+}
+
+.about-intro .lead {
+    margin-top: 1.25rem;
+}
+
+.about-section {
+    padding-block: 5rem;
+}
+
+.about-section--surface {
+    background: var(--surface);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (min-width: 720px) {
+    .about-grid {
+        grid-template-columns: 2fr 3fr;
+        gap: 3rem;
+    }
+}
+
+.about-grid--split {
+    align-items: center;
+}
+
+@media (min-width: 720px) {
+    .about-grid--split {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.about-body p + p {
+    margin-top: 1em;
+}
+
+.mood-map {
+    width: 100%;
+    max-width: 320px;
+    color: var(--muted);
+    display: block;
+}
+
+.about-close {
+    padding-block: 4rem 6rem;
+    color: var(--muted);
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary - VibeCheck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/interactions.css">
+</head>
+<body class="page-diary">
+    <header class="site-nav wrap">
+        <a href="./" class="wordmark">VibeCheck</a>
+        <nav>
+            <a href="diary.html" aria-current="page">Diary</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main class="wrap">
+        <section class="diary-head">
+            <h1>Your November.</h1>
+            <p class="lead">Sixteen moods, so far.</p>
+        </section>
+
+        <section class="diary-calendar" aria-label="November 2026">
+            <div class="calendar-labels" aria-hidden="true">
+                <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+            </div>
+
+            <ol class="calendar-grid">
+                <li class="day day--mood-calm"><span class="day-num">1</span></li>
+                <li class="day day--mood-calm"><span class="day-num">2</span></li>
+                <li class="day day--empty"><span class="day-num">3</span></li>
+                <li class="day day--mood-joyful"><span class="day-num">4</span></li>
+                <li class="day day--empty"><span class="day-num">5</span></li>
+                <li class="day day--mood-tense"><span class="day-num">6</span></li>
+                <li class="day day--mood-calm"><span class="day-num">7</span></li>
+
+                <li class="day day--empty"><span class="day-num">8</span></li>
+                <li class="day day--mood-melancholy"><span class="day-num">9</span></li>
+                <li class="day day--mood-serene"><span class="day-num">10</span></li>
+                <li class="day day--empty"><span class="day-num">11</span></li>
+                <li class="day day--mood-romantic day--today"><span class="day-num">12</span></li>
+                <li class="day day--empty"><span class="day-num">13</span></li>
+                <li class="day day--mood-joyful"><span class="day-num">14</span></li>
+
+                <li class="day day--mood-calm"><span class="day-num">15</span></li>
+                <li class="day day--empty"><span class="day-num">16</span></li>
+                <li class="day day--empty"><span class="day-num">17</span></li>
+                <li class="day day--mood-serene"><span class="day-num">18</span></li>
+                <li class="day day--empty"><span class="day-num">19</span></li>
+                <li class="day day--mood-melancholy"><span class="day-num">20</span></li>
+                <li class="day day--empty"><span class="day-num">21</span></li>
+
+                <li class="day day--empty"><span class="day-num">22</span></li>
+                <li class="day day--mood-calm"><span class="day-num">23</span></li>
+                <li class="day day--empty"><span class="day-num">24</span></li>
+                <li class="day day--mood-tense"><span class="day-num">25</span></li>
+                <li class="day day--empty"><span class="day-num">26</span></li>
+                <li class="day day--empty"><span class="day-num">27</span></li>
+                <li class="day day--mood-joyful"><span class="day-num">28</span></li>
+
+                <li class="day day--empty"><span class="day-num">29</span></li>
+                <li class="day day--mood-nostalgic"><span class="day-num">30</span></li>
+            </ol>
+        </section>
+
+        <section class="diary-summary">
+            <h2>Mostly quietly hopeful.</h2>
+            <div class="mood-bar" aria-label="Mood distribution this month">
+                <span class="mood-bar__seg bar-calm"    style="flex: 5"></span>
+                <span class="mood-bar__seg bar-joyful"  style="flex: 3"></span>
+                <span class="mood-bar__seg bar-serene"  style="flex: 2"></span>
+                <span class="mood-bar__seg bar-melancholy" style="flex: 2"></span>
+                <span class="mood-bar__seg bar-tense"   style="flex: 2"></span>
+                <span class="mood-bar__seg bar-romantic" style="flex: 1"></span>
+                <span class="mood-bar__seg bar-nostalgic" style="flex: 1"></span>
+            </div>
+            <ul class="mood-legend">
+                <li><span class="dot bar-calm"></span>Quietly hopeful <span class="count">5</span></li>
+                <li><span class="dot bar-joyful"></span>Joyful <span class="count">3</span></li>
+                <li><span class="dot bar-serene"></span>Serene <span class="count">2</span></li>
+                <li><span class="dot bar-melancholy"></span>Melancholy <span class="count">2</span></li>
+                <li><span class="dot bar-tense"></span>Tense <span class="count">2</span></li>
+                <li><span class="dot bar-romantic"></span>Romantic <span class="count">1</span></li>
+                <li><span class="dot bar-nostalgic"></span>Nostalgic <span class="count">1</span></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-end wrap">
+        <p><a href="./">New photo</a></p>
+    </footer>
+</body>
+</html>

@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VibeCheck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/interactions.css">
 </head>
-<body>
-    <h1>YOOOOOOOOOOooooo Let's Do THIS!</h1>
+<body class="page-index">
+    <header class="site-nav wrap">
+        <a href="./" class="wordmark">VibeCheck</a>
+        <nav>
+            <a href="diary.html">Diary</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main class="hero wrap">
+        <h1>What does your photo sound like?</h1>
+        <p class="lead">Upload a photo. VibeCheck reads its mood and finds songs that match.</p>
+
+        <form class="upload" aria-label="Upload a photo">
+            <label for="photo" class="upload-button">Choose a photo</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+            <p class="upload-hint"><small>or drop one anywhere on this page</small></p>
+        </form>
+    </main>
+
+    <footer class="site-end wrap">
+        <p><small>Photos never leave your device.</small></p>
+    </footer>
 </body>
 </html>

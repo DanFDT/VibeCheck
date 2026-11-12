@@ -1,0 +1,15 @@
+/*
+ * interactions.css
+ *
+ * Reserved for the Week 3 interaction pass. Loaded by every page already so
+ * when the JS lands, the CSS mount points are live without touching HTML.
+ *
+ * Planned contents:
+ * - Cross-page view transitions
+ * - Share-sheet bottom-sheet styling and open/close animation
+ * - Stagger-reveal rules for [data-stagger="reveal"] song list
+ * - Diary cell tap-to-open modal
+ * - Loading skeleton shimmer
+ * - Toast notification styling
+ * - Button press feedback
+ */
