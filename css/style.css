@@ -202,6 +202,200 @@ button {
     color: var(--muted);
 }
 
+/* The hidden property works through a UA rule that any author display
+   rule outranks, so .upload and .analyze-status stayed visible when JS set
+   element.hidden = true. This makes hidden mean hidden everywhere. */
+[hidden] {
+    display: none !important;
+}
+
+.upload-error {
+    margin: 0;
+    margin-top: 0.75rem;
+    color: var(--mood-tense);
+    font-size: var(--step-small);
+}
+
+.preview {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 60vh;
+    width: auto;
+    display: block;
+}
+
+.preview-meta {
+    margin: 0;
+}
+
+.preview-change {
+    background: transparent;
+    color: var(--muted);
+    border: 0;
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+}
+
+.analyze-status {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 24rem;
+    margin-top: 0.5rem;
+}
+
+.analyze-status__label {
+    margin: 0;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.analyze-status__track {
+    background: var(--surface);
+    height: 6px;
+    overflow: hidden;
+}
+
+.analyze-status__bar {
+    background: var(--accent);
+    height: 100%;
+    width: 0%;
+    transition: width 0.2s;
+}
+
+.top-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+
+.top-loader__bar {
+    height: 2px;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.top-loader__label {
+    margin: 0.4rem var(--margin) 0;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.top-loader.is-hidden {
+    opacity: 0;
+}
+
+.top-loader.is-failed .top-loader__bar {
+    background: var(--mood-tense);
+    width: 100%;
+}
+
+.mood-results {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 28rem;
+}
+
+.mood-top {
+    margin: 0;
+    font-size: var(--step-head);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.mood-note {
+    margin: 0;
+    margin-bottom: 1rem;
+    color: var(--muted);
+    font-size: var(--step-small);
+    max-width: 34rem;
+}
+
+/* A weak read still shows the ranking, but dimmed, so it reads as evidence
+   rather than as an answer. */
+.mood-results--unsure .mood-ranked {
+    opacity: 0.55;
+}
+
+.mood-ranked {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mood-ranked li {
+    display: grid;
+    grid-template-columns: 1rem 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.mood-swatch {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+}
+
+.mood-swatch--calm       { background: var(--mood-calm); }
+.mood-swatch--joyful     { background: var(--mood-joyful); }
+.mood-swatch--tense      { background: var(--mood-tense); }
+.mood-swatch--melancholy { background: var(--mood-melancholy); }
+.mood-swatch--dark     { background: var(--mood-dark); }
+.mood-swatch--romantic   { background: var(--mood-romantic); }
+.mood-swatch--nostalgic  { background: var(--mood-nostalgic); }
+
+.mood-name {
+    font-family: var(--font-display);
+    font-size: var(--step-body);
+}
+
+.mood-score {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+body.is-dropping {
+    outline: 2px solid var(--accent);
+    outline-offset: -8px;
+}
+
+body.is-dropping::before {
+    content: "Drop to analyze";
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: color-mix(in oklab, var(--bg) 70%, transparent);
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: var(--step-head);
+    letter-spacing: -0.02em;
+    z-index: 100;
+    pointer-events: none;
+}
+
 .site-end {
     padding-block: 2rem;
     color: var(--muted);
@@ -271,11 +465,80 @@ button {
     flex-shrink: 0;
 }
 
-/* Placeholder cover tints, rotated across the three cards. Replaced by real
-   album art in Week 2 once songs.json carries cover URLs. */
+/* Fallback cover tints for the static cards on result.html. The upload page
+   uses real album art and falls back to the mood colour, see .song-cover--*
+   below. */
 .song-cover--a { background: var(--mood-calm); }
 .song-cover--b { background: var(--mood-melancholy); }
-.song-cover--c { background: var(--mood-serene); }
+.song-cover--c { background: var(--mood-dark); }
+
+/* Mood-coloured covers for the songs picked on the upload page. The colour
+   shows through whenever a cover image is missing or fails to load. */
+.song-cover--joyful     { background: var(--mood-joyful); }
+.song-cover--melancholy { background: var(--mood-melancholy); }
+.song-cover--tense      { background: var(--mood-tense); }
+.song-cover--romantic   { background: var(--mood-romantic); }
+.song-cover--calm       { background: var(--mood-calm); }
+.song-cover--nostalgic  { background: var(--mood-nostalgic); }
+.song-cover--dark       { background: var(--mood-dark); }
+
+.song-cover__art {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.songs-heading {
+    font-family: var(--font-display);
+    font-size: var(--step-body);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+    margin-bottom: 0.9rem;
+    color: var(--muted);
+}
+
+.song-why {
+    margin: 0;
+    margin-top: 0.3rem;
+    color: var(--muted);
+}
+
+.song-link--text {
+    color: var(--muted);
+    font-size: var(--step-small);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    white-space: nowrap;
+}
+.song-link--text:hover {
+    color: var(--ink);
+}
+
+.songs-more {
+    margin-top: 1rem;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--surface);
+    padding: 0.6rem 1.1rem;
+    font: inherit;
+    font-size: var(--step-small);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+}
+.songs-more:hover {
+    color: var(--ink);
+    border-color: var(--muted);
+}
+
+/* The upload page appends this under the mood list, where result.html has it
+   as a standalone section. */
+.preview .result-songs {
+    margin-top: 1.75rem;
+    width: 100%;
+    max-width: 34rem;
+}
 
 .song-info {
     min-width: 0;
@@ -349,16 +612,16 @@ button {
     border: 0;
 }
 
-/* ---- mood color placeholders ---- */
-/* These stand in for the real 7-mood palette that gets defined in Week 2
-   once the mood model exists. Diary.html and result.html use these names;
-   swap the values later, no HTML changes needed. */
+/* ---- mood colours ---- */
+/* One colour per mood, matching the seven moods the analyser returns.
+   Referenced by name across the pages, so a value can change here without
+   touching any HTML. */
 :root {
     --mood-calm:       #4ADE80;
     --mood-joyful:     #FBBF24;
     --mood-tense:      #F87171;
     --mood-melancholy: #60A5FA;
-    --mood-serene:     #5EEAD4;
+    --mood-dark:       #A78BFA;
     --mood-romantic:   #F472B6;
     --mood-nostalgic:  #D4A373;
 }
@@ -426,7 +689,7 @@ button {
 .day--mood-joyful     { background: var(--mood-joyful); }
 .day--mood-tense      { background: var(--mood-tense); }
 .day--mood-melancholy { background: var(--mood-melancholy); }
-.day--mood-serene     { background: var(--mood-serene); }
+.day--mood-dark     { background: var(--mood-dark); }
 .day--mood-romantic   { background: var(--mood-romantic); }
 .day--mood-nostalgic  { background: var(--mood-nostalgic); }
 
@@ -490,7 +753,7 @@ button {
 .bar-joyful     { background: var(--mood-joyful); }
 .bar-tense      { background: var(--mood-tense); }
 .bar-melancholy { background: var(--mood-melancholy); }
-.bar-serene     { background: var(--mood-serene); }
+.bar-dark     { background: var(--mood-dark); }
 .bar-romantic   { background: var(--mood-romantic); }
 .bar-nostalgic  { background: var(--mood-nostalgic); }
 
